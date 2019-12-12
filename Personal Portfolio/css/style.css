@@ -1,0 +1,61 @@
+.flex, .homepage__photo, .homepage, header nav, header {
+  display: flex;
+  flex-direction: row wrap;
+}
+
+body {
+  color: #444144;
+  font-family: Helvetica, arial, sans-serif;
+  background-color: #eae5e5;
+}
+
+h1, h3, h2 {
+  font-size: bolder;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
+h3 {
+  font-style: italic;
+}
+
+header {
+  justify-content: flex-end;
+}
+header nav {
+  justify-content: space-evenly;
+  align-items: center;
+  width: 70%;
+  border: 3px solid black;
+}
+header nav div a {
+  cursor: pointer;
+  color: #444144;
+  font-weight: bold;
+  text-decoration: none;
+}
+header nav div a:hover {
+  color: #61d0d4;
+}
+header nav div a:after {
+  color: #444144;
+}
+
+.homepage {
+  padding: 20px;
+  justify-content: stretch;
+  align-items: center;
+}
+.homepage__photo {
+  border: 3px solid black;
+  flex-grow: 1;
+}
+.homepage__photo img {
+  width: 50%;
+  border-radius: 50%;
+}
+.homepage__greeting {
+  border: 3px solid black;
+  flex-grow: 2;
+}
+
+/*# sourceMappingURL=style.css.map */

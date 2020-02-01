@@ -1,13 +1,98 @@
+
 @import 'theme';
+
 @mixin test-boundary {
     border:3px solid black;
 }
+
+@mixin resume-span-break-line {
+    border-bottom: 1px solid $darker;
+}
+
+@mixin resume-break-line {
+    border-top: 1px solid $darker;
+}
+
+
 .flex{
     display: flex;
     flex-direction: row wrap;
 }
 
-//////////////////////////////////////////////////////////
+.column_icon{
+    height: 60%;
+    border-radius: 50%;
+    background-color: $green;
+}
+
+.full-width-div{
+    width:100vw;
+    position: relative;
+    margin-left: -50vw;
+    margin-top: 100px;
+    left: 50%;
+}
+
+
+@media only screen and (max-width:$breakpoint){
+    nav{
+        flex-direction: column;
+    }
+    .homepage{
+        flex-direction: column;
+        align-items: center;
+        &__photo{
+            padding:0;
+            max-width: 50%;
+        }
+        &__greeting{
+            #sub-header{
+                text-align: center;
+            }
+        } 
+        
+    }
+    .footer{
+        flex-direction: column;
+        padding-left: $std-padding;
+        
+    .span__more{
+        margin-left:10% ;
+    }
+    }
+
+    .resume-span{
+        margin-bottom: 100px;
+    }
+
+    .resume-content{
+        .section-subheading{
+            height:$subheadingunit;
+            width:$subheadingunit;
+        }
+    }
+
+    .contact-form{
+        p{
+            text-align: center;
+        }
+    }
+    
+    
+    }
+
+
+///////////////////////////index.html css w flex///////////////////////////////
+a{
+    color:$darker;
+    text-decoration: none;
+}
+
+a:hover{
+    cursor: pointer;
+    color: $darker;
+    text-decoration: underline;
+}   
 
 body{
     color: $darker;
@@ -15,26 +100,33 @@ body{
     background-color: $light;
 }   
 
+header, main{
+    padding: 0 5% 0 5%;
+}
+
 h1, h2{
-    font-size: bolder;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-h3 {
+#sub-header {
     @extend h1;
-    font-style: italic;
+    color:$darker;
 }
 
 header{
     @extend .flex;
-    justify-content: flex-end;
+    justify-content: center;
+    
     nav{
+
         div a{
+            font-size: large;
             cursor: pointer;
             color: $darker;
             font-weight: bold;
             text-decoration: none;
             &:hover{
-                color: $green;
+                color: $red;
+                text-decoration: none;
             }
             &:after{
                 color:$darker;
@@ -44,28 +136,146 @@ header{
         justify-content: space-evenly;
         align-items: center;
         width:70%;
-        @include test-boundary();
+      
     }
 }
 
 .homepage{
-    padding:$stdgap;
+    padding:$std-padding;
     @extend .flex;
-    justify-content: stretch;
-    align-items: center;
+    justify-content: flex-end;
+    align-items: flex-start;
     
     &__photo{
-        @include test-boundary();
         @extend .flex;
-        flex-grow: 1;
+        max-width: 40%;
+        padding:0 50px 0 0 ;
             img{
-                width:50%;
+                width:100%;
                 border-radius: 50%;
             }
     }
     &__greeting{
-        @include test-boundary();
-        flex-grow: 2;
+        p{
+            font-size: 1.7rem;
+        }
+       
+        h2{
+            font-size: 4em;
+        }
+        
         
     }
+    
+}
+
+.span{
+    &__more{
+        height:40px;
+        margin-left: 1%;
+        background-color: $light;
+        @extend .column_icon;
+    }
+}
+
+.footer{
+    @extend .flex;
+    position: relative;
+    z-index: 1;
+    justify-content: space-evenly;
+    background-color: $red;
+  
+    &__column{
+        height: $footerheight;
+        margin-right: 20px;
+        @extend .flex;
+        align-items: center;
+        
+        a{
+            display: block;
+        }
+        .emp, a, a:hover{
+            color:$light;
+        }
+        
+        &__icon{
+            margin-right:5px;
+           @extend .column_icon;
+        }
+    }   
+}
+footer, span{
+        font-variant: small-caps; 
+}
+
+////////////////////////////////////resume css////////////////////
+
+.section-details{
+    padding-top: 20px;
+    @include resume-break-line();
+}
+
+.section-subheading{
+    background-color: $green;
+    min-height: 200px;
+    min-width: 185px;
+    padding: 80px 0 80px 10px;
+}
+
+.resume-span{
+    margin-top: 100px;
+    &__heading{
+        color:$darker;
+        
+        @include resume-span-break-line();
+    }
+}
+
+ul li:before {
+    content: '✓';
+    font-size: large;
+  }
+
+ul{
+    list-style: none;
+    padding: 0;
+}
+///////////////////////////////////////contact css/////////////////////////////////////
+
+.contact-form{
+    button{
+        background-color: $red;
+        color:$light;
+    }
+}
+  
+///////////////////////////////////////project css/////////////////////////////////////
+
+
+.project-heading{
+    @include resume-span-break-line();
+}
+
+.project-details{
+    &__slides{
+        img{
+            width:$picture-width;
+    }
+}
+
+    &__intro{
+        &-heading{
+            height:150px;
+            width: 150px;
+            background-color: $green;
+            h3{
+                color: white;
+                padding-top: 50px;
+                padding-left: 20px;  
+            }
+            
+        }
+        
+    }
+    @include resume-span-break-line();
 }
